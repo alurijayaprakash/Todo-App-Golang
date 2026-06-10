@@ -1,0 +1,44 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Dependencies
+vendor
+go.sum
+
+# Build artifacts
+*.o
+*.a
+
+# Test coverage
+coverage.out
+*.coverprofile
+
+# Temporary files
+tmp
+*.log
+
+# Docs
+README.md
+CHANGELOG.md
+
+# CI/CD
+.github
+.gitlab-ci.yml
+.travis.yml
+
+# Node modules (if any)
+node_modules
+
+# OS
+.DS_Store
+Thumbs.db

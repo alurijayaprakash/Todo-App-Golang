@@ -1,0 +1,63 @@
+basePath: /api/v1
+definitions:
+  domain.Todo:
+    properties:
+      completed:
+        type: boolean
+      id:
+        type: string
+      title:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: Golang REST Production architecture clean skeleton layout engine.
+  title: Todo Core API Spec Layout
+  version: "1.0"
+paths:
+  /todos:
+    post:
+      consumes:
+      - application/json
+      description: Create a todo entity inside our abstract datastore layer
+      parameters:
+      - description: Todo request item payload
+        in: body
+        name: todo
+        required: true
+        schema:
+          $ref: '#/definitions/domain.Todo'
+      produces:
+      - application/json
+      responses:
+        "210":
+          description: ""
+          schema:
+            $ref: '#/definitions/domain.Todo'
+        "400":
+          description: Invalid JSON Input
+          schema:
+            type: string
+      summary: Create a new Todo
+      tags:
+      - todos
+  /todos/{id}:
+    get:
+      parameters:
+      - description: Todo Element ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/domain.Todo'
+      summary: Get a single Todo item by identifier string
+      tags:
+      - todos
+swagger: "2.0"

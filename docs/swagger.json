@@ -1,0 +1,97 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Golang REST Production architecture clean skeleton layout engine.",
+        "title": "Todo Core API Spec Layout",
+        "contact": {},
+        "version": "1.0"
+    },
+    "host": "localhost:8080",
+    "basePath": "/api/v1",
+    "paths": {
+        "/todos": {
+            "post": {
+                "description": "Create a todo entity inside our abstract datastore layer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "todos"
+                ],
+                "summary": "Create a new Todo",
+                "parameters": [
+                    {
+                        "description": "Todo request item payload",
+                        "name": "todo",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/domain.Todo"
+                        }
+                    }
+                ],
+                "responses": {
+                    "210": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/domain.Todo"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid JSON Input",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/todos/{id}": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "todos"
+                ],
+                "summary": "Get a single Todo item by identifier string",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Todo Element ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/domain.Todo"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "domain.Todo": {
+            "type": "object",
+            "properties": {
+                "completed": {
+                    "type": "boolean"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
