@@ -365,4 +365,4 @@ MIT License - See LICENSE file for details
 
 For issues, questions, or contributions, please open an issue on GitHub.
 
-**Project Repository**: [Todo-App-Golang](https://github.com/yourusername/Todo-App-Golang)
+**Project Repository**: [Todo-App-Golang](https://github.com/alurijayaprakash/Todo-App-Golang)
