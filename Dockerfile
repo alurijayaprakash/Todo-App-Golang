@@ -2,7 +2,7 @@
 # No shell, no package manager, no vulnerabilities
 
 # Stage 1: Build Stage
-FROM golang:1.24.1-alpine3.19 AS builder
+FROM golang:1.24.1-alpine AS builder
 
 WORKDIR /app
 

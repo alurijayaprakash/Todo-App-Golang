@@ -3,7 +3,7 @@ version: '3.8'
 services:
   # PostgreSQL Database Service
   postgres:
-    image: postgres:16-alpine
+    image: postgres:14
     container_name: todo-postgres
     environment:
       POSTGRES_USER: postgres
