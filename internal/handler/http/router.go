@@ -26,6 +26,8 @@ func NewRouter(todoService *service.TodoService, enableSwagger bool) *mux.Router
 
 	// API Routing Sub-Router Mapping Definitions
 	api := r.PathPrefix("/api/v1").Subrouter()
+	healthHandler := NewHealthHandler()
+	api.HandleFunc("/health", healthHandler.Ping).Methods(http.MethodGet)
 	api.HandleFunc("/todos", todoHandler.Create).Methods(http.MethodPost)
 	api.HandleFunc("/todos/{id}", todoHandler.GetByID).Methods(http.MethodGet)
 

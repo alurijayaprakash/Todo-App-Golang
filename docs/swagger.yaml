@@ -9,6 +9,11 @@ definitions:
       title:
         type: string
     type: object
+  http.HealthProbe:
+    properties:
+      status:
+        type: string
+    type: object
 host: localhost:8080
 info:
   contact: {}
@@ -16,6 +21,19 @@ info:
   title: Todo Core API Spec Layout
   version: "1.0"
 paths:
+  /health:
+    get:
+      description: Returns service health status
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/http.HealthProbe'
+      summary: Health check
+      tags:
+      - health
   /todos:
     post:
       consumes:

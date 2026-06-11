@@ -15,6 +15,26 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
+        "/health": {
+            "get": {
+                "description": "Returns service health status",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "health"
+                ],
+                "summary": "Health check",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/http.HealthProbe"
+                        }
+                    }
+                }
+            }
+        },
         "/todos": {
             "post": {
                 "description": "Create a todo entity inside our abstract datastore layer",
@@ -95,6 +115,14 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "http.HealthProbe": {
+            "type": "object",
+            "properties": {
+                "status": {
                     "type": "string"
                 }
             }
